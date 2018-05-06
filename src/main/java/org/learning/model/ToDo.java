@@ -1,9 +1,6 @@
 package org.learning.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -17,6 +14,10 @@ public class ToDo {
     @NotNull
     @Size(min = 2, max = 255)
     private String title;
+
+    @ManyToOne
+    @JoinColumn(name = "username")
+    private User user;
 
     @Size(max = 255)
     private String description;
@@ -38,6 +39,14 @@ public class ToDo {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getDescription() {
