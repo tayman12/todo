@@ -10,7 +10,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>ToDo Application</title>
+    <title><spring:message code="todo.app.title"/></title>
 
     <link href="assets/css/bootstrap.css" rel="stylesheet">
     <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
@@ -25,7 +25,7 @@
 <div class="navbar navbar-fixed-top navbar-inverse">
     <div class="navbar-inner">
         <div class="container">
-            <a class="brand" href="todo.html"> Get started</a>
+            <a class="brand" href="todo.html"><spring:message code="navbar.get.started"/></a>
             <ul class="nav"></ul>
         </div>
     </div>
@@ -51,7 +51,7 @@
                     <form:input path="frequency"/>
                 </div>
 
-                <input type="submit" class="btn btn-primary" value="<spring:message code="todo.button.enter"/>"/>
+                <input type="submit" class="btn btn-primary" value="<spring:message code="button.add.todo"/>"/>
             </form:form>
         </div>
     </div>
