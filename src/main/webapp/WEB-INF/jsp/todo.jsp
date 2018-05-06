@@ -38,17 +38,20 @@
             <form:form modelAttribute="todo">
                 <div class="control-group">
                     <spring:message code="todo.title"/>
-                    <form:input path="title"/>
+                    <form:input path="title" cssErrorClass="text-error"/>
+                    <form:errors path="title" cssClass="text-error"/>
                 </div>
 
                 <div class="control-group">
                     <spring:message code="todo.description"/>
-                    <form:input path="description"/>
+                    <form:input path="description" cssErrorClass="text-error"/>
+                    <form:errors path="description" cssClass="text-error"/>
                 </div>
 
                 <div class="control-group">
                     <spring:message code="todo.frequency"/>
-                    <form:input path="frequency"/>
+                    <form:input path="frequency" cssErrorClass="text-error"/>
+                    <form:errors path="frequency" cssClass="text-error"/>
                 </div>
 
                 <input type="submit" class="btn btn-primary" value="<spring:message code="button.add.todo"/>"/>

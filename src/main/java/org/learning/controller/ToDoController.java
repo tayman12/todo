@@ -6,9 +6,12 @@ import org.learning.service.ToDoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import javax.validation.Valid;
 
 @Controller
 public class ToDoController {
@@ -26,8 +29,12 @@ public class ToDoController {
     }
 
     @RequestMapping(value = "/todo", method = RequestMethod.POST)
-    public String save(@ModelAttribute("todo") ToDo toDo) {
-        toDoService.save(toDo);
-        return "redirect:index.html";
+    public String save(@Valid @ModelAttribute("todo") ToDo toDo, BindingResult result) {
+        if (result.hasErrors()) {
+            return "todo";
+        } else {
+            toDoService.save(toDo);
+            return "redirect:index.html";
+        }
     }
 }
