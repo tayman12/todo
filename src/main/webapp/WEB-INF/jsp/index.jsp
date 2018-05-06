@@ -1,4 +1,5 @@
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -28,7 +29,18 @@
             <h1><spring:message code="index.welcome"/></h1>
             <p><spring:message code="index.getting.started"/></p>
         </div>
-        <a class="btn btn-primary" href="todo.html"><spring:message code="button.add.todo"/> </a>
+
+        <sec:authorize access="hasRole('USER')">
+            <a class="btn btn-primary" href="todo.html"><spring:message code="button.add.todo"/> </a>
+        </sec:authorize>
+
+        <sec:authorize access="!isAuthenticated()">
+            <a class="btn btn-warning" href="login"><spring:message code="button.login"/> </a>
+        </sec:authorize>
+
+        <sec:authorize access="isAuthenticated()">
+            <a class="btn btn-warning" href="logout.html"><spring:message code="button.logout"/> </a>
+        </sec:authorize>
     </div>
 </div>
 </body>

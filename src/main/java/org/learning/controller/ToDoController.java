@@ -4,6 +4,7 @@ import org.learning.model.Frequency;
 import org.learning.model.ToDo;
 import org.learning.service.ToDoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -19,6 +20,7 @@ public class ToDoController {
     @Autowired
     ToDoService toDoService;
 
+    @PreAuthorize("authenticated")
     @RequestMapping(value = "/todo", method = RequestMethod.GET)
     public String displayDefaultToDo(Model model) {
         ToDo toDo = new ToDo();
@@ -28,6 +30,7 @@ public class ToDoController {
         return "todo";
     }
 
+    @PreAuthorize("authenticated")
     @RequestMapping(value = "/todo", method = RequestMethod.POST)
     public String save(@Valid @ModelAttribute("todo") ToDo toDo, BindingResult result) {
         if (result.hasErrors()) {

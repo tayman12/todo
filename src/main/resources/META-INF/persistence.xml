@@ -6,6 +6,8 @@
 
     <persistence-unit name="punit">
         <class>org.learning.model.ToDo</class>
+        <class>org.learning.model.User</class>
+        <class>org.learning.model.Authority</class>
     </persistence-unit>
 
 </persistence>
