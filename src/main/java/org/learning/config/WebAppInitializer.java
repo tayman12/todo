@@ -18,7 +18,6 @@ public class WebAppInitializer implements WebApplicationInitializer {
         ServletRegistration.Dynamic dispatcherServlet = servletContext.addServlet("DispatcherServlet", new DispatcherServlet(context));
         dispatcherServlet.setLoadOnStartup(1);
         dispatcherServlet.addMapping("*.html");
-        dispatcherServlet.addMapping("*.json");
     }
 
     private WebApplicationContext getContext() {

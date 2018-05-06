@@ -20,7 +20,7 @@ public class ToDoController {
     @Autowired
     ToDoService toDoService;
 
-    @PreAuthorize("authenticated")
+    @PreAuthorize("hasRole('USER')")
     @RequestMapping(value = "/todo", method = RequestMethod.GET)
     public String displayDefaultToDo(Model model) {
         ToDo toDo = new ToDo();
@@ -30,7 +30,7 @@ public class ToDoController {
         return "todo";
     }
 
-    @PreAuthorize("authenticated")
+    @PreAuthorize("hasRole('USER')")
     @RequestMapping(value = "/todo", method = RequestMethod.POST)
     public String save(@Valid @ModelAttribute("todo") ToDo toDo, BindingResult result) {
         if (result.hasErrors()) {
